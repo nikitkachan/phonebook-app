@@ -6,10 +6,13 @@ import {
   Box,
   Button,
   ButtonGroup,
+  IconButton,
   Toolbar,
   Typography,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+
+import { StyledLink } from './Layout.styled';
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
@@ -24,7 +27,7 @@ const Layout = ({ children }) => {
     <div>
       <AppBar position="sticky" sx={{ bgcolor: '#eeeeee' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <Link to="/">
+          <StyledLink to="/">
             <Button
               size="small"
               variant="contained"
@@ -33,7 +36,7 @@ const Layout = ({ children }) => {
             >
               Home
             </Button>
-          </Link>
+          </StyledLink>
           {authenticated ? (
             <Box
               sx={{
@@ -43,13 +46,14 @@ const Layout = ({ children }) => {
                 flexGrow: 1,
               }}
             >
-              <Link to="/phonebook">
+              <StyledLink to="/phonebook">
                 <Button size="small" variant="contained">
                   Phonebook
                 </Button>
-              </Link>
+              </StyledLink>
 
               <Box
+                className="helloWrapper"
                 edge="end"
                 sx={{
                   display: 'flex',
@@ -59,14 +63,15 @@ const Layout = ({ children }) => {
                 <Typography sx={{ ml: 'auto' }} color="black">
                   Hello, {userData.name}!
                 </Typography>
-                <Button
-                  sx={{ ml: 2 }}
-                  variant="outlined"
+                <IconButton
                   size="small"
+                  aria-label="logout"
+                  color="black"
+                  sx={{ ml: 1 }}
                   onClick={onLogOut}
                 >
-                  Log Out
-                </Button>
+                  <LogoutRoundedIcon />
+                </IconButton>
               </Box>
             </Box>
           ) : (
@@ -75,12 +80,12 @@ const Layout = ({ children }) => {
                 variant="outlined"
                 aria-label="outlined button group"
               >
-                <Link to="/login">
+                <StyledLink to="/login">
                   <Button size="small">Sign In</Button>
-                </Link>
-                <Link to="/register">
+                </StyledLink>
+                <StyledLink to="/register">
                   <Button size="small">Sign Up</Button>
-                </Link>
+                </StyledLink>
               </ButtonGroup>
             </Box>
           )}

@@ -8,3 +8,7 @@ export const StyledNavLink = styled(NavLink)`
     text-decoration: underline;
   }
 `;
+
+export const StyledLink = styled(NavLink)`
+  text-decoration: none;
+`;
