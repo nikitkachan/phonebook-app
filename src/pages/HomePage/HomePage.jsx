@@ -12,6 +12,7 @@ import { Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { selectAuthenticated } from 'redux/auth/auth.selectors';
 import { useSelector } from 'react-redux';
+import { StyledLink } from 'components/Layout/Layout.styled';
 
 const HomePage = () => {
   const authenticated = useSelector(selectAuthenticated);
@@ -53,11 +54,11 @@ const HomePage = () => {
               spacing={2}
               justifyContent="center"
             >
-              <Link to="/phonebook">
+              <StyledLink to="/phonebook">
                 <Button size="large" variant="contained">
                   Go to phonebook
                 </Button>
-              </Link>
+              </StyledLink>
             </Stack>
           ) : (
             <Stack
